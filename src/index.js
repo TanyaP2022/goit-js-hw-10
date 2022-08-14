@@ -70,13 +70,3 @@ const createOneItem = item => {
  </li>`;
   countryList.insertAdjacentHTML('beforeend', itemResult);
 };
-function onInputChange(e) {
-  const searchName = e.target.value.trim().toUpperCase();
-  fetchCountries(searchName)
-    .then(data => {
-      filterCountries(data);
-    })
-    .catch(error => {
-      console.log(error);
-    });
-}
