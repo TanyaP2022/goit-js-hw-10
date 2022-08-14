@@ -26,17 +26,19 @@ body {
   display: flex;
   align-items: center;
   font-size: 14px;
-  text-shadow: 2px 2px green;
 }
-.list-item img{
+img{
   width: 30px;
   height: 30px;
   margin-right: 10px;
 }
 h2,
 p{
-display: flex;
-margin-right: 10px;
-font-size: 14px;
-align-items: center;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+span{
+  margin-right: 10px;
+  font-weight: bold;
 }
