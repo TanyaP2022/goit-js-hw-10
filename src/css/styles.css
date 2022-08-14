@@ -18,27 +18,30 @@ body {
   max-width: 320px;
   margin-bottom: 16px;
 }
-.country-list{
+.country-list {
   display: flex;
   flex-direction: column-reverse;
 }
-.list-item{
+.list-item {
   display: flex;
   align-items: center;
   font-size: 14px;
 }
-img{
+ul {
+  list-style: none;
+}
+img {
   width: 30px;
   height: 30px;
   margin-right: 10px;
 }
 h2,
-p{
+p {
   display: flex;
   align-items: center;
   font-size: 14px;
 }
-span{
+span {
   margin-right: 10px;
   font-weight: bold;
 }
