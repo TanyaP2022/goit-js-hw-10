@@ -45,7 +45,7 @@ const createOneItem = item => {
 };
 
 const filterCountries = array => {
-  if (array.length === 0) {
+  if (array.length === 1) {
     clearListCountriesEl();
     return createOneItem(array[0]);
   } else if (array.length < 10 && array.length > 0) {
@@ -62,12 +62,20 @@ const filterCountries = array => {
   }
 };
 
+// function onInputChange(event) {
+//   const searchName = event.target.value.trim().toUpperCase();
+//   fetchCountries(searchName)
+//     .then(data => {
+//       filterCountries(data);
+//     })
+//     .catch(error => {
+//       console.log(error);
+//     });
+// }
 function onInputChange(event) {
   const searchName = event.target.value.trim().toUpperCase();
   fetchCountries(searchName)
-    .then(data => {
-      filterCountries(data);
-    })
+    .then(filterCountries)
     .catch(error => {
       console.log(error);
     });
