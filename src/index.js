@@ -14,13 +14,9 @@ inputSearchBox.addEventListener(
   debounce(onInputChange, DEBOUNCE_DELAY)
 );
 
-// const clearListCountriesEl = () => {
-//   countryList.innerHTML = '';
-// };
-function clearListCountriesEl(country) {
-  const markup = clearListCountriesEl(country);
-  countryList.innerHTML = markup;
-}
+const clearListCountriesEl = () => {
+  countryList.innerHTML = '';
+};
 
 const createListItems = item => `<li class="list-item">
 <img src="${item.flags.svg}" alt="flag of ${item.name.official}" width="50">
