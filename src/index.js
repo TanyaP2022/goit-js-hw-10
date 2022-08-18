@@ -14,8 +14,11 @@ inputSearchBox.addEventListener(
   debounce(onInputChange, DEBOUNCE_DELAY)
 );
 
+// const clearListCountriesEl = () => {
+//   countryList.innerHTML = '';
+// };
 const clearListCountriesEl = () => {
-  countryList.innerHTML = '';
+  countryList.innerHTML = markup;
 };
 
 const createListItems = item => `<li class="list-item">
@@ -62,11 +65,21 @@ const filterCountries = array => {
   }
 };
 
+// function onInputChange(event) {
+//   const searchName = event.target.value.trim().toUpperCase();
+//   fetchCountries(searchName)
+//     .then(data => {
+//       filterCountries(data);
+//     })
+//     .catch(error => {
+//       console.log(error);
+//     });
+// }
 function onInputChange(event) {
   const searchName = event.target.value.trim().toUpperCase();
   fetchCountries(searchName)
     .then(data => {
-      filterCountries(data);
+      const markup = filterCountries(data);
     })
     .catch(error => {
       console.log(error);
