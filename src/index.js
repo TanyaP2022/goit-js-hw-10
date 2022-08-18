@@ -45,10 +45,10 @@ const createOneItem = item => {
 };
 
 const filterCountries = array => {
-  if (array.length === 1) {
+  if (array.length === 0) {
     clearListCountriesEl();
     return createOneItem(array[0]);
-  } else if (array.length < 10 && array.length >= 0) {
+  } else if (array.length < 10 && array.length > 0) {
     clearListCountriesEl();
     insertContent(array);
   } else if (array.length > 10) {
