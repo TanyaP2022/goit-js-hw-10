@@ -14,11 +14,8 @@ inputSearchBox.addEventListener(
   debounce(onInputChange, DEBOUNCE_DELAY)
 );
 
-// const clearListCountriesEl = () => {
-//   countryList.innerHTML = '';
-// };
 const clearListCountriesEl = () => {
-  countryList.innerHTML = markup;
+  countryList.innerHTML = '';
 };
 
 const createListItems = item => `<li class="list-item">
@@ -51,7 +48,7 @@ const filterCountries = array => {
   if (array.length === 1) {
     clearListCountriesEl();
     return createOneItem(array[0]);
-  } else if (array.length < 10 && array.length > 0) {
+  } else if (array.length < 10 && array.length >= 0) {
     clearListCountriesEl();
     insertContent(array);
   } else if (array.length > 10) {
@@ -65,21 +62,11 @@ const filterCountries = array => {
   }
 };
 
-// function onInputChange(event) {
-//   const searchName = event.target.value.trim().toUpperCase();
-//   fetchCountries(searchName)
-//     .then(data => {
-//       filterCountries(data);
-//     })
-//     .catch(error => {
-//       console.log(error);
-//     });
-// }
 function onInputChange(event) {
   const searchName = event.target.value.trim().toUpperCase();
   fetchCountries(searchName)
     .then(data => {
-      const markup = filterCountries(data);
+      filterCountries(data);
     })
     .catch(error => {
       console.log(error);
