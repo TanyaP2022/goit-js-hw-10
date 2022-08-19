@@ -62,13 +62,19 @@ const filterCountries = array => {
   }
 };
 
+// function onInputChange(event) {
+//   const searchName = event.target.value.trim().toUpperCase();
+//   fetchCountries(searchName)
+//     .then(data => {
+//       filterCountries(data);
+//     })
+//     .catch(error => {
+//       console.log(error);
+//     });
+// }
 function onInputChange(event) {
   const searchName = event.target.value.trim().toUpperCase();
-  fetchCountries(searchName)
-    .then(data => {
-      filterCountries(data);
-    })
-    .catch(error => {
-      console.log(error);
-    });
+  if (searchName === '') {
+    return;
+  }
 }
