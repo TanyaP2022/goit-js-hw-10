@@ -31,19 +31,24 @@ const insertContent = array => {
   countryList.insertAdjacentHTML('beforeend', result);
 };
 
-const createOneItem = item => {
-  const itemResult = `<li>
+function createOneItem(response) {
+  const itemResult = response
+    .map(item => {
+      return `<li>
  <h2><span>Country: </span> ${item.name.official}</h2>
  <p><span>Capital: </span> ${item.capital}</p>
  <p><span>Popolation: </span> ${item.population}</p>
  <p><span>Flag: </span>
  <img src="${item.flags.svg}" alt="flag of ${
-    item.name.official
-  }" width="50"></p>
+        item.name.official
+      }" width="50"></p>
  <p><span>Languages: </span> ${Object.values(item.languages)}</p>
  </li>`;
-  countryList.insertAdjacentHTML('beforeend', itemResult);
-};
+    })
+    .join('');
+  countryInfo.innerHTML = itemResult;
+}
+
 function onInputChange(event) {
   const searchName = event.target.value.trim().toUpperCase();
   if (searchName === '') {
