@@ -40,9 +40,11 @@ h2,
 p {
   display: flex;
   align-items: center;
+  margin: 3px;
+  padding: 0;
   font-size: 14px;
 }
 span {
-  margin-right: 10px;
+  margin-right: 5px;
   font-weight: bold;
 }

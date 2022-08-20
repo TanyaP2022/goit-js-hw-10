@@ -28,9 +28,9 @@ function createOneItem(response) {
   const itemResult = response
     .map(item => {
       return `<li>
- <h2><span>Country: </span> ${item.name.official}</h2>
  <p><span>Capital: </span> ${item.capital}</p>
  <p><span>Popolation: </span> ${item.population}</p>
+ <p><span>Languages: </span> ${Object.values(item.languages)}</p>
  </li>`;
     })
     .join('');
