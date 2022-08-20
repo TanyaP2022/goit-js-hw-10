@@ -47,20 +47,19 @@ function onInputChange(event) {
   if (searchName === '') {
     return;
   }
-  fetchCountries(searchName)
-    .then(response => {
-      if (response.length === 1) {
-        createOneItem(response);
-      }
-      if (response.length < 10 && response.length > 0) {
-        createListItems(response);
-      }
-      if (response.length > 10) {
-        Notiflix.Notify.failure(
-          'Too many matches found. Please enter a more specific name.'
-        );
-      }
-    })
-    .catch(error => console.log(error));
-  clearListCountriesEl();
+  fetchCountries(searchName).then(response => {
+    if (response.length === 1) {
+      createOneItem(response);
+    }
+    if (response.length < 10 && response.length > 0) {
+      createListItems(response);
+    }
+    if (response.length > 10) {
+      Notiflix.Notify.failure(
+        'Too many matches found. Please enter a more specific name.'
+      );
+    }
+  });
+  //   .catch(error => console.log(error));
+  // clearListCountriesEl();
 }
