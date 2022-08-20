@@ -56,7 +56,7 @@ function onInputChange(event) {
         createListItems(response);
       }
       if (response.length > 10) {
-        Notiflix.Notify.failure(
+        Notiflix.failure(
           'Too many matches found. Please enter a more specific name.'
         );
       }
