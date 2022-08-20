@@ -27,7 +27,8 @@ body {
   align-items: center;
   font-size: 14px;
 }
-ul {
+ul,
+li {
   list-style: none;
 }
 img {
