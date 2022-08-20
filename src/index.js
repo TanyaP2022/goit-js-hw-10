@@ -13,23 +13,16 @@ inputSearchBox.addEventListener(
   'input',
   debounce(onInputChange, DEBOUNCE_DELAY)
 );
-
-const clearListCountriesEl = () => {
-  countryList.innerHTML = '';
-  countryInfo.innerHTML = '';
-};
-
-const createListItems = item => `<li class="list-item">
+function createListItems(response) {
+  const itemList = response
+    .map(item => {
+      return `<li class="list-item">
 <img src="${item.flags.svg}" alt="flag of ${item.name.official}" width="50">
 <h2>${item.name.official}</h2></li>`;
-
-const generateContent = array =>
-  array.reduce((acc, item) => acc + createListItems(item), '');
-
-const insertContent = array => {
-  const result = generateContent(array);
-  countryList.insertAdjacentHTML('beforeend', result);
-};
+    })
+    .join('');
+  countryList.innerHTML = itemList;
+}
 
 function createOneItem(response) {
   const itemResult = response
