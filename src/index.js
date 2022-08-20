@@ -1,5 +1,5 @@
 import './css/styles.css';
-import { Notiflix } from 'notiflix';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { fetchCountries } from './fetchCountries';
 const debounce = require('lodash.debounce');
 
@@ -56,7 +56,7 @@ function onInputChange(event) {
         createListItems(response);
       }
       if (response.length > 10) {
-        Notiflix.failure(
+        Notify.failure(
           'Too many matches found. Please enter a more specific name.'
         );
       }

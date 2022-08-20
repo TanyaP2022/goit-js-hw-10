@@ -1,5 +1,4 @@
-import { Notiflix } from 'notiflix';
-
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 export function fetchCountries(searchName) {
   const BASE_URL = 'https://restcountries.com/v3.1';
 
@@ -8,7 +7,7 @@ export function fetchCountries(searchName) {
   ).then(response => {
     if (!response.ok) {
       throw new Error(
-        Notiflix.failure('Oops, there is no country with that name')
+        Notify.failure('Oops, there is no country with that name')
       );
     }
     return response.json();
