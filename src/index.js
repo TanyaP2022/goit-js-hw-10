@@ -16,6 +16,7 @@ inputSearchBox.addEventListener(
 
 const clearListCountriesEl = () => {
   countryList.innerHTML = '';
+  countryInfo.innerHTML = '';
 };
 
 const createListItems = item => `<li class="list-item">
@@ -25,10 +26,10 @@ const createListItems = item => `<li class="list-item">
 const generateContent = array =>
   array.reduce((acc, item) => acc + createListItems(item), '');
 
-const insertContent = array => {
-  const result = generateContent(array);
-  countryList.insertAdjacentHTML('beforeend', result);
-};
+// const insertContent = array => {
+//   const result = generateContent(array);
+//   countryList.insertAdjacentHTML('beforeend', result);
+// };
 
 const createOneItem = item => {
   const itemResult = `<li>
@@ -43,35 +44,23 @@ const createOneItem = item => {
  </li>`;
   countryList.insertAdjacentHTML('beforeend', itemResult);
 };
-
-fetchCountries(searchName).then(response => {
-  if (response.length === 1) {
-    clearListCountriesEl();
-  } else if (response.length < 10 && response.length > 0) {
-    clearListCountriesEl();
-  } else if (response.length > 10) {
-    Notiflix.Notify.failure(
-      'Too many matches found. Please enter a more specific name.'
-    );
-  } else {
-    clearListCountriesEl();
-    Notiflix.Notify.failure('Oops, there is no country with that name');
-  }
-});
-
-// function onInputChange(event) {
-//   const searchName = event.target.value.trim().toUpperCase();
-//   fetchCountries(searchName)
-//     .then(data => {
-//       filterCountries(data);
-//     })
-//     .catch(error => {
-//       console.log(error);
-//     });
-// }
 function onInputChange(event) {
   const searchName = event.target.value.trim().toUpperCase();
   if (searchName === '') {
     return;
   }
+  fetchCountries(searchName)
+    .then(response => {
+      if (response.length === 1) {
+        createOneItem();
+      } else if (response.length < 10 && response.length > 0) {
+        createListItems();
+      } else if (response.length > 10) {
+        Notiflix.Notify.failure(
+          'Too many matches found. Please enter a more specific name.'
+        );
+      }
+    })
+    .catch(error => console.log(error));
+  clearListCountriesEl();
 }
