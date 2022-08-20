@@ -52,10 +52,12 @@ function onInputChange(event) {
   fetchCountries(searchName)
     .then(response => {
       if (response.length === 1) {
-        createOneItem();
-      } else if (response.length < 10 && response.length > 0) {
-        createListItems();
-      } else if (response.length > 10) {
+        createOneItem(response);
+      }
+      if (response.length < 10 && response.length > 0) {
+        createListItems(response);
+      }
+      if (response.length > 10) {
         Notiflix.Notify.failure(
           'Too many matches found. Please enter a more specific name.'
         );
