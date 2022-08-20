@@ -26,10 +26,10 @@ const createListItems = item => `<li class="list-item">
 const generateContent = array =>
   array.reduce((acc, item) => acc + createListItems(item), '');
 
-// const insertContent = array => {
-//   const result = generateContent(array);
-//   countryList.insertAdjacentHTML('beforeend', result);
-// };
+const insertContent = array => {
+  const result = generateContent(array);
+  countryList.insertAdjacentHTML('beforeend', result);
+};
 
 const createOneItem = item => {
   const itemResult = `<li>
