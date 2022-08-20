@@ -44,15 +44,12 @@ const createOneItem = item => {
   countryList.insertAdjacentHTML('beforeend', itemResult);
 };
 
-const filterCountries = array => {
-  if (array.length === 1) {
+fetchCountries(searchName).then(response => {
+  if (response.length === 1) {
     clearListCountriesEl();
-    return createOneItem(array[0]);
-  } else if (array.length < 10 && array.length > 0) {
+  } else if (response.length < 10 && response.length > 0) {
     clearListCountriesEl();
-    insertContent(array);
-  } else if (array.length > 10) {
-    clearListCountriesEl();
+  } else if (response.length > 10) {
     Notiflix.Notify.failure(
       'Too many matches found. Please enter a more specific name.'
     );
@@ -60,7 +57,7 @@ const filterCountries = array => {
     clearListCountriesEl();
     Notiflix.Notify.failure('Oops, there is no country with that name');
   }
-};
+});
 
 // function onInputChange(event) {
 //   const searchName = event.target.value.trim().toUpperCase();
